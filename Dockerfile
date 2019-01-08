@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+ARG erlang_version
+ARG elixir_version
 ARG server_release_version
 
 WORKDIR /
@@ -25,7 +27,10 @@ RUN     curl -O http://packages.erlang-solutions.com/erlang-solutions_1.0_all.de
         dpkg -i erlang-solutions_1.0_all.deb && apt-get update
 
 # install erlang
-RUN apt-get update && apt-get install -y erlang-nox=1:21.1-1 erlang-dev=1:21.1-1 erlang-src=1:21.1-1
+RUN apt-get update && apt-get install -y \
+        erlang-nox=1:${erlang_version}-1 \
+        erlang-dev=1:${erlang_version}-1 \
+        erlang-src=1:${erlang_version}-1
 
 # install elixir
 RUN apt-get update && apt-get install -y locales && \
@@ -37,7 +42,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8
 
-RUN apt-get update && apt-get install -y elixir=1.7.4-1
+RUN apt-get update && apt-get install -y elixir=${elixir_version}-1
 
 # add local RabbitMQ repo
 RUN mkdir rabbitmq-server
