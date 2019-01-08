@@ -59,4 +59,6 @@ RUN make package-generic-unix PROJECT_VERSION=${server_release_version}
 RUN tar -xf PACKAGES/rabbitmq-server-generic-unix-*.tar.xz -C /.
 WORKDIR /rabbitmq_server-${server_release_version}
 RUN echo "[rabbitmq_management]." > etc/rabbitmq/enabled_plugins
-CMD ./sbin/rabbitmq-server
+
+# Start RabbitMQ sever
+CMD echo ${RABBITMQ_COOKIE} > /root/.erlang.cookie && chmod 600 /root/.erlang.cookie && ./sbin/rabbitmq-server
