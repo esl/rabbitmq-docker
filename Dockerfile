@@ -87,8 +87,7 @@ RUN tar -xf PACKAGES/rabbitmq-server-generic-unix-*.tar.xz -C /.
 WORKDIR /rabbitmq_server-${server_release_version}
 
 # Add ctl scripts to /usr/bin
-RUN for script in rabbitmqctl rabbitmq-defaults rabbitmq-diagnostics rabbitmq-env rabbitmq-plugins rabbitmq-server; \
-  do ln -s /rabbitmq_server-${server_release_version}/sbin/$script /usr/bin/$script; done
+ENV PATH /rabbitmq_server-${server_release_version}/sbin:${PATH}
 
 # Enable Management plugin
 RUN echo "[rabbitmq_management]." > etc/rabbitmq/enabled_plugins
