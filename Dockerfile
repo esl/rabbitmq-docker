@@ -89,6 +89,9 @@ WORKDIR /rabbitmq_server-${server_release_version}
 # Add ctl scripts to /usr/bin
 ENV PATH /rabbitmq_server-${server_release_version}/sbin:${PATH}
 
+# Allow to login to MGMT web UI from outside a container
+RUN echo "loopback_users.guest = false" > etc/rabbitmq/rabbitmq.conf
+
 # Enable Management plugin
 RUN echo "[rabbitmq_management]." > etc/rabbitmq/enabled_plugins
 
