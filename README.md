@@ -9,7 +9,7 @@ To build an image run:
 
 ```bash
 IMAGE=rabbitmq \
-VERSION=3.7.9 \
+TAG=3.7.9 \
 RMQ_VERSION=v3.7.9 \
 ERLANG_VERSION=21.1 \
 ELIXIR_VERSION=1.7.4 \
@@ -20,7 +20,7 @@ CONTEXT_PATH=../rabbitmq-server \
 where:
 
 * `IMAGE` - name of the Docker image
-* `VERSION` - version of the Docker image that will be build
+* `TAG` - Docker image tag
 * `RMQ_VERSION` - version of RabbitMQ that will be build
 * `CONTEXT_PATH` - path to the local (to the host machine, not Docker) RabbitMQ
 source code.
