@@ -28,9 +28,31 @@ RUN     curl -O http://packages.erlang-solutions.com/erlang-solutions_1.0_all.de
 
 # Install erlang
 RUN apt-get update && apt-get install -y \
-        erlang-nox=1:${erlang_version}-1 \
-        erlang-dev=1:${erlang_version}-1 \
-        erlang-src=1:${erlang_version}-1
+        erlang-dev=1:${erlang_version}-* \
+        erlang-src=1:${erlang_version}-* \
+        # Install erlang-nox manually
+        erlang-base=1:${erlang_version}-* \
+        erlang-asn1=1:${erlang_version}-* \
+        erlang-crypto=1:${erlang_version}-* \
+        erlang-diameter=1:${erlang_version}-* \
+        erlang-edoc=1:${erlang_version}-* \
+        erlang-eldap=1:${erlang_version}-* \
+        erlang-erl-docgen=1:${erlang_version}-* \
+        erlang-eunit=1:${erlang_version}-* \
+        erlang-ic=1:${erlang_version}-* \
+        erlang-inets=1:${erlang_version}-* \
+        erlang-mnesia=1:${erlang_version}-* \
+        erlang-odbc=1:${erlang_version}-* \
+        erlang-os-mon=1:${erlang_version}-* \
+        erlang-parsetools=1:${erlang_version}-* \
+        erlang-public-key=1:${erlang_version}-* \
+        erlang-runtime-tools=1:${erlang_version}-* \
+        erlang-snmp=1:${erlang_version}-* \
+        erlang-ssh=1:${erlang_version}-* \
+        erlang-ssl=1:${erlang_version}-* \
+        erlang-syntax-tools=1:${erlang_version}-* \
+        erlang-tools=1:${erlang_version}-* \
+        erlang-xmerl=1:${erlang_version}-*
 
 # Install elixir
 RUN apt-get update && apt-get install -y locales && \
@@ -42,7 +64,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8
 
-RUN apt-get update && apt-get install -y elixir=${elixir_version}-1
+RUN apt-get update && apt-get install -y elixir=${elixir_version}-*
 
 # Add local RabbitMQ repo
 RUN mkdir rabbitmq-server
