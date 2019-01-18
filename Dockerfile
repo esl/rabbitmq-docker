@@ -94,4 +94,4 @@ RUN for script in rabbitmqctl rabbitmq-defaults rabbitmq-diagnostics rabbitmq-en
 RUN echo "[rabbitmq_management]." > etc/rabbitmq/enabled_plugins
 
 # Start RabbitMQ sever
-CMD echo ${RABBITMQ_COOKIE} > /root/.erlang.cookie && chmod 600 /root/.erlang.cookie && ./sbin/rabbitmq-server
+CMD echo ${RABBITMQ_COOKIE:-rabbit} > /root/.erlang.cookie && chmod 600 /root/.erlang.cookie && ./sbin/rabbitmq-server
