@@ -73,7 +73,7 @@ COPY . rabbitmq-server/
 # Download rabbitmq-server-release
 RUN git clone https://github.com/rabbitmq/rabbitmq-server-release.git
 WORKDIR rabbitmq-server-release
-RUN git checkout v${server_release_version}
+RUN git checkout ${server_release_version}
 
 # Set local RabbitMQ as dependency
 RUN sed -i -e 's/^dep_rabbit .*$/dep_rabbit = cp \/rabbitmq-server/g' rabbitmq-components.mk
